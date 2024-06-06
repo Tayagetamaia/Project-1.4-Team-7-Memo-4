@@ -20,7 +20,7 @@ thickness_drive = 3e-6  # Dikte platen
 num_capacitors_drive = 100  # Aantal condensatoren
 voltage_drive = 15  # Standaard voltage
 voltage_difference_drive = 1.5  # Amplitude van de oscillerende kracht in N
-mass_drive_total = mass_drive + mass_sense
+mass_drive = mass_drive + mass_sense
 
 # Time parameters
 total_time = 0.06  # Totale tijd
@@ -28,7 +28,7 @@ time_step = 1e-5  # Tijdstap
 time_points = np.arange(0, total_time, time_step)
 
 # Drive calculations
-resonant_frequency_drive = np.sqrt(stiffness_drive / mass_drive_total)
+resonant_frequency_drive = np.sqrt(stiffness_drive / mass_drive)
 voltage_top = voltage_drive + voltage_difference_drive * np.sin(resonant_frequency_drive * time_points)
 voltage_bottom = voltage_drive + voltage_difference_drive * np.sin(resonant_frequency_drive * time_points + np.pi)
 force_top = (num_capacitors_drive * 8.85e-12 * thickness_drive * voltage_top ** 2) / distance_drive
@@ -48,7 +48,7 @@ velocity_drive_list = []
 position_drive_list = []
 
 for i in range(len(time_points)):
-    acceleration_drive = (net_force[i] - damping_drive * velocity_drive - stiffness_drive * position_drive) / mass_drive_total
+    acceleration_drive = (net_force[i] - damping_drive * velocity_drive - stiffness_drive * position_drive) / mass_drive
     velocity_drive += acceleration_drive * time_step
     position_drive += velocity_drive * time_step
     position_drive_list.append(position_drive)
