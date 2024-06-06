@@ -19,7 +19,7 @@ distance_drive = 2e-6  # Afstand tussen condensatorplaten
 thickness_drive = 3e-6  # Dikte platen
 num_capacitors_drive = 100  # Aantal condensatoren
 voltage_drive = 15  # Standaard voltage
-voltage_difference_drive = 60e-9  # Amplitude van de oscillerende kracht in N
+voltage_difference_drive = 1.5  # Amplitude van de oscillerende kracht in N
 
 # Time parameters
 total_time = 0.06  # Totale tijd
