@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import scipy.signal as signal
 
-# Sense parameters
+# Sense paramaers
 mass_sense = 7.42e-6  # Massa van de detectiemassa in kg
 stiffness_sense = 2636.4  # Veerconstante van de detectiemassa in N/m
 damping_sense = 2.797e-03  # Dempingsfactor van de detectiemassa in kg/s
@@ -20,10 +20,10 @@ thickness_drive = 3e-6  # Dikte platen
 num_capacitors_drive = 100  # Aantal condensatoren
 voltage_drive = 15  # Standaard voltage
 voltage_difference_drive = 1.5  # Amplitude van de oscillerende kracht in N
-mass_drive = mass_drive + mass_sense
+
 
 # Time parameters
-total_time = 0.06  # Totale tijd
+total_time = 0.07  # Totale tijd
 time_step = 1e-5  # Tijdstap
 time_points = np.arange(0, total_time, time_step)
 
@@ -36,7 +36,7 @@ force_bottom = (num_capacitors_drive * 8.85e-12 * thickness_drive * voltage_bott
 net_force = force_top - force_bottom
 net_voltage = voltage_top - voltage_bottom
 
-print(max(net_force))
+
 
 
 
@@ -101,7 +101,7 @@ n3 = velocity_drive_analytic / position_sense_analytic
 n4 = voltage_sense_analytic / force_drive_analytic
 
 print(np.mean(n1),np.mean(n2),np.mean(n3),np.mean(n4))
-
+print(16.5 / max(voltage_sense))
 # Plotting
 plt.plot(time_points, voltage_sense)
 
