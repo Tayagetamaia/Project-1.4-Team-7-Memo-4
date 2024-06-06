@@ -1,0 +1,17 @@
+import numpy as np
+import scipy.signal as signal
+
+# Voorbeeld van de tijdreeks (tijd en signalen x1 en x2)
+t = np.linspace(0, 1, 500, endpoint=False)
+x1 = np.sin(2 * np.pi * 5 * t)
+x2 = (2/3) * np.sin(2 * np.pi * 5 * t - np.pi/6)
+
+# Hilbert-transformatie om analytische signalen te verkrijgen
+x1_analytic = signal.hilbert(x1)
+x2_analytic = signal.hilbert(x2)
+
+# Berekenen van de transfercoëfficiënt
+eta = x2_analytic / x1_analytic
+
+# Print de transfercoëfficiënt voor een controle
+print(np.mean(eta))  # Gemiddelde waarde van de berekende transfercoëfficiënt
